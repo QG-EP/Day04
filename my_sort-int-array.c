@@ -11,7 +11,6 @@ void my_sort_int_array(int *array, int size)
 {
     int	modif = 1;
     int	pos;
-    // char *tab;
 
     while (modif == 1) {
         pos = 0;
