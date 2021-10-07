@@ -5,24 +5,21 @@
 ** my_getnbr
 */
 
-int my_getnbr(char const *str)
+int my_getnbr(char *str)
 {
-    int nbr = 0;
-    int	isneg = 1;
-    int	a = 0;
+    int i = 0;
+    int n = 0;
 
-    while (str[a] == '+' || str[a] == '-') {
-        if (str[a] == '-')
-            isneg = isneg * -1;
-        a = a + 1;
+    if (str[0] == '-' && str[1] != '\0')
+        i++;
+    for (i; str[i] != '\0'; i++) {
+        if ((str[i] < '0' || str[i] > '9'))
+        n = n + str[i] - 48;
+        n = n * 10;
     }
-    while (str[a] != '\0') {
-        if (str[a] >= '0' && str[a] <= '9') {
-            nbr = nbr * 10;
-            nbr = nbr + str[a] - '0';
-            a = a + 1;
-        } else
-            return (nbr * isneg);
-    }
-    return (nbr * isneg);
+    n /= 10;
+    if (str[0] == '-')
+        return (-1 * n);
+    else
+        return (n);
 }
