@@ -24,14 +24,3 @@ void my_sort_int_array(int *array, int size)
         }
     }
 }
-
-int main(int ac, char **av)
-{
-    int oui[] = {1, 2, 3, 8, 5, 0, 5};
-    my_sort_int_array(oui, 7);
-
-    for (int i = 0; i < 7; i++) {
-        printf("%d\n", oui[i]);
-    }
-    return (0);
-}
