@@ -7,19 +7,23 @@
 
 int my_getnbr(char *str)
 {
-    int i = 0;
-    int j = 0;
+    int term_sign = 1;
+    int nbr = 0;
 
-    if (str[0] == '-' && str[1] != '\0')
-        i++;
-    for (;str[i] != '\0'; i++) {
-        if ((str[i] < '0' || str[i] > '9'))
-        j = j + str[i] - 48;
-        j = j * 10;
+    for (; *str == '-' || *str == '+'; str++) {
+        if (*str == '-')
+            term_sign = - term_sign;
     }
-    j /= 10;
-    if (str[0] == '-')
-        return (-1 * j);
-    else
-        return (j);
+    for (; *str != '\0' && *str >= '0' && *str <= '9'; str++) {
+        if (nbr > 214748364)
+            return (0);
+        if (nbr == 214748364 && *str > 7 && term_sign == 1)
+            return (0);
+        if (nbr == 214748364 && *str > 8 && term_sign == -1)
+            return (0);
+        nbr = nbr * 10 + *str - 48;
+    }
+    if (term_sign == -1)
+        nbr = -nbr;
+    return (nbr);
 }
